@@ -6,8 +6,7 @@ let privateKey = config.SECRET_KEY;
 let publicKey = config.MY_KEY;
 let hash = md5(ts + privateKey + publicKey);
 
-var nameSearch = "";
-
+// Everything is ready :)
 xml.onreadystatechange = function () {
     if (xml.readyState === 4 && xml.status === 200) {
         displayData(xml);
@@ -16,7 +15,6 @@ xml.onreadystatechange = function () {
 }
 
 xml.open("GET", "https://gateway.marvel.com:443/v1/public/characters?limit=12&ts=" + ts + "&apikey="+publicKey+"&hash=" + hash);
-
 xml.send(ts, hash, privateKey, publicKey);
 
 console.log(hash);
